@@ -20,6 +20,7 @@ module Utils =
   let parseSingle = tryParseWith System.Single.TryParse
   let parseDouble = tryParseWith System.Double.TryParse
   let parseGuid = tryParseWith System.Guid.TryParse
+  let parseBool = tryParseWith System.Boolean.TryParse
 
 
   let tee (log: string -> unit) x =

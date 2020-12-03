@@ -23,10 +23,19 @@ module Main =
     loggerMain.LogInfo
     <| sprintf "%A" commandLineArgumentsParsed
 
-    let advent = commandLineArgumentsParsed.Day
+    let adventDay = commandLineArgumentsParsed.Day
+    let adventExercise = commandLineArgumentsParsed.Exercise
+    let benchmark = commandLineArgumentsParsed.Benchmark
+    let folder = commandLineArgumentsParsed.Folder
 
-    match advent with
-    | 1 -> BenchmarkRunner.Run<Bm.Advent1>() |> ignore
-    | _ -> Environment.Exit 1
+    match adventDay, adventExercise, benchmark with
+    | 1, 1, true -> ()
+    | 1, 1, false ->
+        loggerMain.LogInfo
+        <| (sprintf "%A" (Bm.Advent1e1.run folder))
+    | 1, 2, false ->
+        loggerMain.LogInfo
+        <| (sprintf "%A" (Bm.Advent1e2.run folder))
+    | _, _, _ -> Environment.Exit 1
 
     0
